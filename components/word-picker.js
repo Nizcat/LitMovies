@@ -33,6 +33,7 @@ export class WordPicker extends LitElement {
       word: this.word,
       conditional: this.firstBoo,
     };
+    
     this._sendItem(this.item);
   }
 

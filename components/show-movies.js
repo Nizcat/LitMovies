@@ -36,12 +36,7 @@ export class ShowMovies extends LitElement {
     `,
   ];
   
-  firstUpdated() {
-    super.firstUpdated();
-    this.movies;
-    console.log(this.movies, "en show")
-    this.requestUpdate()
-  }
+  
   constructor() {
     super();
     

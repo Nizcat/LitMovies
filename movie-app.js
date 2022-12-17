@@ -19,35 +19,30 @@ export class MovieApp extends LitElement {
     super();
     this.showMovies = true;
     this.pickedWord = "";
-    this.word ="";
-    this.movies=[{}];
+    this.word = "cat";
+    this.movies = [{}];
+    this.url= "http://www.omdbapi.com/?s=panda&page=1&apikey=47392fcc"
     this.addEventListener("word", (e) => {
-      this.selectedItem = e.detail;
-      this.pickedWord = this.selectedItem.item;
-      this.word=this.pickedWord.word;
-      console.log(this.word, "listener en papá");
+      console.log(e.detail.item.word, "buscando word");
+      this.word = e.detail.item.word;
+      this.url= "http://www.omdbapi.com/?s="+this.word+"&page=1&apikey=47392fcc";
     });
     this.addEventListener("ApiData", (e) => {
-        this.movies = e.detail.data.Search;
-        
-        console.log(this.movies, "movies listener en papá");
-        this.requestUpdate();
-      });
+      this.movies = e.detail.data.Search
+      console.log(this.movies, "movies listener en papá");
+      this.requestUpdate();
+    });
   }
-  firstUpdated(){
-    this.word;
-    this.movies;
-    this.requestUpdate();
-  }
+ 
 
   render() {
     return html`
-      ${this.showMovies ? html` <word-picker></word-picker>
-      <get-data word=${this.word}></get-data>
-      <show-movies .movies=${this.movies} ></show-movies> ` 
-      : html`
-      
-      `}
+     
+            <word-picker></word-picker>
+            <get-data url=${this.url}></get-data>
+            <show-movies .movies=${this.movies}></show-movies>
+          
+       
     `;
   }
 }
