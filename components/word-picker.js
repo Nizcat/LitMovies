@@ -9,7 +9,7 @@ export class WordPicker extends LitElement {
         background-color: black;
         color: white;
         width: 100vw;
-        height: 100vh;
+        height: 40vh;
       }
       .wordPicker {
         width: 12em;
@@ -20,7 +20,7 @@ export class WordPicker extends LitElement {
   render() {
     return html`
       <h1>Try a Word and find out the matches movies</h1>
-      <input id="pickW" class="wordPicker" /><button @click="${this.pickWord}" class="wordPicker">
+      <input id="pickW" class="wordPicker" placeholder="panda" /><button @click="${this.pickWord}" class="wordPicker">
         try
       </button>
     `;
@@ -33,7 +33,7 @@ export class WordPicker extends LitElement {
       word: this.word,
       conditional: this.firstBoo,
     };
-    
+
     this._sendItem(this.item);
   }
 
