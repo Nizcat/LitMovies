@@ -32,6 +32,12 @@ export class MovieApp extends LitElement {
       console.log(this.movies, "movies listener en papá");
       this.requestUpdate();
     });
+    this.addEventListener("page", (e) => {
+      this.page = e.detail.page
+      console.log(this.page, "page in dad");
+      this.url= "http://www.omdbapi.com/?s="+this.word+"&page="+this.page+"&apikey=47392fcc";
+      this.requestUpdate();
+    });
   }
  
 
